@@ -1,0 +1,11 @@
+th, td{
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+/* Estilo para los selects */
+#selectEstudiante, #selectCurso {
+    max-width: 100% !important; /* Limita el ancho máximo del select al 100% del contenedor padre */
+    width: 100% !important; /* Ajusta el ancho del select al 100% del contenedor padre */
+    font-size: 12px !important;
+}

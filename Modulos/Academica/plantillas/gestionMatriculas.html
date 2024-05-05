@@ -1,0 +1,96 @@
+{% extends "./base.html" %}
+{% load static %}
+
+<!-- TITLE -->
+{% block title %}
+    Gestión de Matrículas
+{% endblock %}
+
+<!-- CSS -->
+{% block css %}
+    {% static '/css/estilos.css' %}
+{% endblock %}
+
+<!-- BODY -->
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 py-2">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong class="text-dark">{{ message }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>                   
+                {% endfor %}
+            {% endif %}
+            <h2>Gestión de Matrículas</h2>
+            <div class="card my-4">
+                <div class="card-body">
+                    <form action="/registrarMatricula/" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <select name="txtEstudiante" id="selectEstudiante">
+                                {% for e in estudiantesListados %}
+                                    <option value="{{e.dni}}">{{e}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <select name="txtCurso" id="selectCurso">
+                                {% for c in cursosListados %}
+                                    <option value="{{c.codigo}}">{{c}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <br>                        
+                        <div class="form-group d-grid gap-2">
+                            <button type="submit" class="btn btn-success text-white">Guardar</button>
+                        </div>                        
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+            <h1>Listado de Matrículas</h1>
+            <div class="table-responsive py-2">
+                <table class="table table-striped">
+                    <thead>
+                        <hr>
+                        <tr>
+                            <th>#</th>
+                            <th>Estudiante</th>
+                            <th>Curso</th>
+                            <th>FEcha de Matrícula</th>
+                            <th colspan="2">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for e in matriculas %}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td style="visibility:collapse; display:none;">{{e.id}}</td>
+                                <td>{{e.estudiante}}</td>
+                                <td>{{e.curso}}</td>
+                                <td>{{e.fechaMatricula}}</td>
+                                <td>
+                                    <a href="/eliminarMatricula/{{e.id}}" class="btnEliminar">
+                                        <svg data-slot="icon" aria-hidden="true" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 30px; color: red">
+                                            <path d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" stroke-linecap="round" stroke-linejoin="round"></path>
+                                          </svg>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+<!-- JS -->
+{% block js %}
+    {% static 'js/gestionMatricula.js' %}
+{% endblock %}

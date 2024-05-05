@@ -1,0 +1,37 @@
+{% extends "./base.html" %}
+
+<!-- TITLE -->
+{% block title %}
+    Editar Carrera
+{% endblock %}
+
+<!-- BODY -->
+{% block body %}
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <h2>Edición de Carrera</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/edicionCarrera/" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" name="txtCodigo" id="" class="form-control" value="{{carrera.codigo}}" minlength="6" maxlength="6" required readonly>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" name="txtNombre" id="" class="form-control" value="{{carrera.nombre}}" minlength="2" maxlength="30" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" name="txtDuracion" id="" class="form-control" minlength="1" maxlength="9" value="{{carrera.duracion}}" required>
+                        </div>
+                        <br>
+                        <div class="form-group d-grid gap-2">
+                            <button type="submit" class="btn btn-success text-white">Guardar</button>
+                        </div>                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

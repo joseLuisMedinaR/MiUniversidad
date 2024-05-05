@@ -1,0 +1,74 @@
+{% extends "./base.html" %}
+
+<!-- TITLE -->
+{% block title %}
+    Editar Estudiante
+{% endblock %}
+
+<!-- BODY -->
+{% block body %}
+<h2>Gestión de Estudiantes</h2>
+            <div class="card my-4">
+                <div class="card-body">
+                    <form action="/edicionEstudiante/" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" name="txtDNI" id="" class="form-control" value="{{estudiante.dni}}" placeholder="" minlength="8" maxlength="8" required readonly>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" name="txtApellidoPaterno" id="" class="form-control" value="{{estudiante.apellidoPaterno}}" placeholder="" minlength="2" maxlength="30" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" name="txtApellidoMaterno" id="" class="form-control" value="{{estudiante.apellidoMaterno}}" placeholder="" minlength="2" maxlength="30" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" name="txtNombres" id="" class="form-control" value="{{estudiante.nombres}}" placeholder="" minlength="2" maxlength="30" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="date" name="txtFechaNac" id="" value="{{ estudiante.fechaNacimiento|date:'Y-m-d' }}" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <select name="txtSexo" id="">
+                                {% for key, value in sexos %}
+                                    {% if key == estudiante.sexo %}
+                                        <option value="{{ key }}" selected>{{ value }}</option>
+                                    {% else %}
+                                        <option value="{{ key }}">{{ value }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>                        
+                        <br>
+                        <div class="form-group">
+                            <select name="txtCarrera" id="">
+                                {% for c in carreras %}
+                                    {% if c == estudiante.carrera %}
+                                        <option value="{{c.codigo}}" selected>{{ estudiante.carrera }}</option>
+                                    {% else %}
+                                        <option value="{{c.codigo}}">{{c.nombre}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="checkbox" name="txtVigente" id="txtVigente" 
+                            {% if estudiante.vigencia %}
+                                checked
+                            {% endif %}>
+                            <label for="txtVigente">Vigente</label>
+                        </div>
+                        <br>                        
+                        <div class="form-group d-grid gap-2">
+                            <button type="submit" class="btn btn-success text-white">Guardar</button>
+                        </div>                        
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock %}
