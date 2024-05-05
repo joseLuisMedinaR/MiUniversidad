@@ -121,13 +121,13 @@ USE_TZ = False
 STATIC_URL = 'static/'
 
 EMAIL_BAKCEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "c1760217.ferozo.com"
+EMAIL_HOST = ""
 #EMAIL_USE_TLS = True
 EMAIL_USE_SSL = True
 #EMAIL_PORT = 587
 EMAIL_PORT = 465
-EMAIL_HOST_USER = "pruebas@joseluweb.com.ar"
-EMAIL_HOST_PASSWORD = "wnyL/eV9hC"
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
