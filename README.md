@@ -13,15 +13,7 @@ Después de investigar e ir comparando código, haciendo mi primer tutorial de Y
 Esta app es con fines educativos, no soy responsable por el uso que se le de a la misma.
 
 ## Herramientas
-<img src="./iconos/django.svg">
-&nbsp;&nbsp;&nbsp;
-<img src="./iconos/python.svg">
-&nbsp;&nbsp;&nbsp;
-<img src="./iconos/html5.svg">
-&nbsp;&nbsp;&nbsp;
-<img src="./iconos/css.svg">
-&nbsp;&nbsp;&nbsp;
-<img src="./iconos/js.svg">
+<img src="./iconos/django.svg">&nbsp;&nbsp;&nbsp;<img src="./iconos/python.svg">&nbsp;&nbsp;&nbsp;<img src="./iconos/html5.svg">&nbsp;&nbsp;&nbsp;<img src="./iconos/css.svg">&nbsp;&nbsp;&nbsp;<img src="./iconos/js.svg">
 
 ## Conclusión
 ![Un gran poder conlleva una gran responsabilidad](poderResponsabilidad.png)
